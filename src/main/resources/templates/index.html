@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Reddit clone</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+  <meta charset="utf-8"/>
+  <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <p>
+    <a th:href="@{/submit}">Submit a new post</a>
+  </p>
+  <h2>Trending posts</h2>
+  <form th:action="@{{page}(page=${page}-10)}" method="post">
+    <button type="submit" class="btn btn-dark"><<</button>
+    <button type="submit" th:formaction="@{{page}(page=${page}+10)}"  class="btn btn-dark">>></button>
+  </form>
+  <table>
+    <thead>
+    <tr>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post, iterStat:${posts}"
+        th:if="${iterStat.index} < ${page} AND ${iterStat.index} > ${page} - 10">
+      <td th:text="${post.votes}" class="small-col">
+      </td>
+      <td class="small-col">
+        <form th:action="voteup" method="post">
+          <input type="hidden" th:name="voteUpPostId" th:value="${post.id}"/>
+          <button type="submit" class="btn btn-link">+</button>
+        </form>
+      </td>
+      <td class="small-col">
+        <form th:action="votedown" method="post">
+          <input type="hidden" th:name="voteDownPostId" th:value="${post.id}"/>
+          <button type="submit" class="btn btn-link">-</button>
+        </form>
+      </td>
+      <td>
+        <a th:text="${post.title}" th:href="${post.url}"></a>
+      </td>
+      <td th:text="${post.date}"></td>
+    </tr>
+    </tbody>
+  </table>
+</body>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+</html>

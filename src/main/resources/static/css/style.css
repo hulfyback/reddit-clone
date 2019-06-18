@@ -1,0 +1,23 @@
+h1, h2, form {
+  width: 20%;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+form {
+  display: block;
+}
+
+table {
+  width: 50%;
+  margin: auto;
+}
+
+table, td {
+  text-align: center;
+}
+
+.small-col {
+  width: 3%;
+}
