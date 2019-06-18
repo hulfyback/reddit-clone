@@ -1,8 +1,6 @@
 package com.greenfoxacademy.redditclone.model;
 
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
