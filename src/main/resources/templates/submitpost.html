@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Reddit clone</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <meta charset="utf-8" />
+</head>
+<body>
+  <h1>Submit a new post</h1>
+  <form th:action="submit" method="post" class="form-group">
+    <label for="title">Title:</label>
+    <input th:type="text" th:name="title" id="title" required/>
+    <label for="url">URL:</label>
+    <input th:type="text" th:name="url" id="url" required/>
+    <input type="submit" value="Submit"/>
+  </form>
+
+</body>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+</html>
