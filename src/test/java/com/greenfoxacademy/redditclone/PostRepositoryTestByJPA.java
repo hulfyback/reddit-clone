@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-public class PostRepositoryIntegrationTest {
+public class PostRepositoryTestByJPA {
   private List<String> inputList;
   private static final String SOURCEFILE = "src/test/resources/assets/sample_urls.csv";
 
@@ -58,7 +58,6 @@ public class PostRepositoryIntegrationTest {
   @Test
   public void whenCallFindAllByOrderByVotesDesc_thenItsSizeEqualsToCountOfFlushedPosts() {
     List<Post> postList = postRepository.findAllByOrderByVotesDesc();
-    System.out.println(postList.size());
     assertEquals(inputList.size(), postList.size());
   }
 }
