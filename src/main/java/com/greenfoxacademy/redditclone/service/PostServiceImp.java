@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PostServiceImp implements IPostService {
+  private IPostService iPostService;
 
   @Autowired
   IPostRepository postRepository;

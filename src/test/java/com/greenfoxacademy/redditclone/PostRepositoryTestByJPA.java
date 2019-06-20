@@ -23,7 +23,6 @@ import static org.junit.Assert.*;
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 public class PostRepositoryTestByJPA {
   private List<String> inputList;
-  private static final String SOURCEFILE = "src/test/resources/assets/sample_urls.csv";
 
   @Autowired
   IPostRepository postRepository;
@@ -31,15 +30,7 @@ public class PostRepositoryTestByJPA {
   @Autowired
   TestEntityManager testEntityManager;
 
-  private List<String> readFile() {
-    Path path = Paths.get(SOURCEFILE);
-    try {
-      return Files.readAllLines(path);
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null;
-    }
-  }
+
 
   private void flushPostsFromList(List<String> postList) {
     for (String item : postList) {
@@ -50,7 +41,7 @@ public class PostRepositoryTestByJPA {
 
   @Before
   public void setup() {
-     inputList = readFile();
+     inputList = ReadTestFile.readFile();
     assert inputList != null;
     flushPostsFromList(inputList);
   }

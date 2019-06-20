@@ -38,6 +38,7 @@ public class TestingWithMockito {
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
+    List<String> urlList = ReadTestFile.readFile();
   }
   
   @Test
@@ -47,5 +48,11 @@ public class TestingWithMockito {
             new Post("another title", "another url"))
         .collect(Collectors.toList()));
     Assert.assertEquals(2, postService.getAllPosts().size());
+  }
+
+  @Test
+  public void whenCallGetTop10Posts_thenReturnTop10posts() {
+    when(iPostRepository.findTop10ByOrderByVotesDesc()).thenCallRealMethod();
+    assertEquals(10, postService.getTop10Posts().size());
   }
 }

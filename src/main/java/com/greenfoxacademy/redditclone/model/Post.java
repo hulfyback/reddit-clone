@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.greenfoxacademy.redditclone.repository.IPostRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,7 +34,7 @@ public class Post {
     }
   }
 
-  public Post(IPostRepository iPostRepository) {
+  public Post() {
     this.votes = 0;
     this.title = "";
     this.url = "";
@@ -47,5 +46,37 @@ public class Post {
     this.title = title;
     this.url = url;
     this.date = LocalDate.now();
+  }
+
+  public int getVotes() {
+    return votes;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public LocalDate getDate() {
+    return date;
   }
 }
