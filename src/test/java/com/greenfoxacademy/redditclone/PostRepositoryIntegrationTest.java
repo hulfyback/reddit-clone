@@ -56,7 +56,7 @@ public class PostRepositoryIntegrationTest {
   }
 
   @Test
-  public void whenFindById_thenReturnPost() {
+  public void whenCallFindAllByOrderByVotesDesc_thenItsSizeEqualsToCountOfFlushedPosts() {
     List<Post> postList = postRepository.findAllByOrderByVotesDesc();
     System.out.println(postList.size());
     assertEquals(inputList.size(), postList.size());
