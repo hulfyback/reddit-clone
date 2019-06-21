@@ -68,4 +68,14 @@ public class ServiceMockingTest {
 
     verify(postRepository, times(2)).findById(anyLong());
   }
+
+  @Test
+  public void whenVotesOfPostIsZeroAndUserDownvotesIt_thenVotesOfPostShouldBeZero() {
+    when(postRepository.findById(anyLong())).thenReturn(Optional.of(post));
+    postService.downvotePost(post.getId());
+
+    assertEquals(0, post.getVotes());
+
+    verify(postRepository, times(1)).findById(post.getId());
+  }
 }
