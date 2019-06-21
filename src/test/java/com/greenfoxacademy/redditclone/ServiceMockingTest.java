@@ -7,6 +7,7 @@ import com.greenfoxacademy.redditclone.model.Post;
 import com.greenfoxacademy.redditclone.repository.IPostRepository;
 import com.greenfoxacademy.redditclone.service.IPostService;
 import com.greenfoxacademy.redditclone.service.PostServiceImp;
+import java.util.Optional;
 import javax.swing.Spring;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,5 +54,15 @@ public class ServiceMockingTest {
     postService.addPost(post);
 
     verify(postRepository, times(1)).save(post);
+  }
+
+  @Test
+  public void whenCallUpVoteMethod_thenVotesOfPostShouldBeIncreasedByOne() {
+    when(postRepository.findById(anyLong())).thenReturn(Optional.of(post));
+    postService.upvotePost(post.getId());
+
+    assertEquals(1, post.getVotes());
+
+    verify(postRepository, times(1)).findById(anyLong());
   }
 }
