@@ -2,10 +2,6 @@ package com.greenfoxacademy.redditclone;
 
 import com.greenfoxacademy.redditclone.model.Post;
 import com.greenfoxacademy.redditclone.repository.IPostRepository;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,8 +25,6 @@ public class PostRepositoryTestByJPA {
 
   @Autowired
   TestEntityManager testEntityManager;
-
-
 
   private void flushPostsFromList(List<String> postList) {
     for (String item : postList) {
